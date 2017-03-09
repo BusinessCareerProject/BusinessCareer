@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>sidebar</title>
+    </head>
+    <h:body>
+        <ui:composition>
+		<h:form>
+		    <p:panelMenu>
+		        <p:submenu label="社員メンテナンス">
+		            <p:menuitem value="登録"  action="#{menuBean.save}"  />
+		            <p:menuitem value="修正"  action="#{menuBean.update}"  />
+		        </p:submenu>
+		        <p:submenu label="DL／UP">
+		            <p:menuitem value="アップロード"  action="#{menuBean.upload}" />
+		            <p:submenu label="ダウンロード">
+		            	<p:menuitem value="CSV"  action="#{menuBean.downLoadCSV}" />
+		            	<p:menuitem value="EXCEL"/>
+		            </p:submenu>
+		        </p:submenu>
+		    </p:panelMenu>
+	    </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.co.tad.mybatis.mapper.SqlShainMapper">
+
+	<resultMap id="resultShain" type="ShainEntity">
+        <result property="shainId" column="SHAIN_NO"/>
+        <result property="shainPw" column="SHAIN_PW"/>
+        <result property="shainSei" column="SHAIN_SEI"/>
+        <result property="shainMei" column="SHAIN_MEI" />
+        <result property="shainKanaSei" column="SHAIN_KANA_SEI" />
+        <result property="shainKanaMei" column="SHAIN_KANA_MEI" />
+        <result property="shainGender" column="SHAIN_GENDER" />
+        <result property="shainBirth" column="SHAIN_BIRTH" />
+        <result property="shainAddress" column="SHAIN_ADDRESS" />
+        <result property="shainSchool" column="SHAIN_SCHOOL" />
+        <result property="updateDatetime" column="UPDATE_DATETIME" />
+        <result property="updateNo" column="UPDATE_NO" />
+		<result property="createDatetime" column="CREATE_DATETIME" />
+		<result property="createNo" column="CREATE_NO" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="resultShain">
+        SELECT SHAIN_NO,
+			SHAIN_PW,
+			SHAIN_SEI,
+			SHAIN_MEI,
+			SHAIN_KANA_SEI,
+			SHAIN_KANA_MEI,
+			SHAIN_GENDER,
+			SHAIN_BIRTH,
+			SHAIN_ADDRESS,
+			SHAIN_SCHOOL,
+			UPDATE_DATETIME,
+			UPDATE_NO,
+			CREATE_DATETIME,
+			CREATE_NO
+		FROM
+			SHAIN
+    </select>
+
+     <select id="getShainByKey" resultMap="resultShain"  parameterType="string">
+        SELECT SHAIN_NO,
+			SHAIN_PW,
+			SHAIN_SEI,
+			SHAIN_MEI,
+			SHAIN_KANA_SEI,
+			SHAIN_KANA_MEI,
+			SHAIN_GENDER,
+			SHAIN_BIRTH,
+			SHAIN_ADDRESS,
+			SHAIN_SCHOOL,
+			UPDATE_DATETIME,
+			UPDATE_NO,
+			CREATE_DATETIME,
+			CREATE_NO
+		FROM
+			SHAIN
+		WHERE
+			SHAIN_NO = #{shainId}
+    </select>
+
+	<insert id="insertShain" parameterType="ShainEntity">
+		INSERT
+		INTO shain(
+ 			SHAIN_NO
+			, SHAIN_PW
+			, SHAIN_SEI
+			, SHAIN_MEI
+			, SHAIN_KANA_SEI
+			, SHAIN_KANA_MEI
+			, SHAIN_GENDER
+			, SHAIN_BIRTH
+			, SHAIN_ADDRESS
+			, SHAIN_SCHOOL
+			, UPDATE_DATETIME
+			, UPDATE_NO
+			, CREATE_DATETIME
+			, CREATE_NO
+			)
+		VALUES (
+			#{shainId}
+			, #{shainPw}
+			, #{shainSei}
+			, #{shainMei}
+			, #{shainKanaSei}
+			, #{shainKanaMei}
+			, #{shainGender}
+			, #{shainBirth}
+			, #{shainAddress}
+			, #{shainSchool}
+			, sysdate(3)
+			, #{updateNo}
+			, sysdate(3)
+			, #{createNo}
+			)
+	</insert>
+
+	<update id="updateShain" parameterType="ShainEntity">
+		UPDATE shain
+		SET
+<!-- 			, SHAIN_PW = #{shainPw} -->
+			  SHAIN_SEI = #{shainSei}
+			, SHAIN_MEI = #{shainMei}
+			, SHAIN_KANA_SEI = #{shainKanaSei}
+			, SHAIN_KANA_MEI = #{shainKanaMei}
+			, SHAIN_GENDER = #{shainGender}
+			, SHAIN_BIRTH = #{shainBirth}
+			, SHAIN_ADDRESS = #{shainAddress}
+			, SHAIN_SCHOOL = #{shainSchool}
+			, UPDATE_DATETIME =  sysdate(3)
+			, UPDATE_NO = #{updateNo}
+		WHERE
+			SHAIN_NO = #{shainId}
+	</update>
+
+     <select id="existShain" resultType="int" parameterType="map">
+     	select count(1) from shain where SHAIN_NO = #{shainId} and SHAIN_PW = #{shainPw}
+     </select>
+
+</mapper>

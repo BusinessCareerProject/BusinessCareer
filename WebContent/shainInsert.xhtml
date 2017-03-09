@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>insert</title>
+</head>
+<h:body>
+	<ui:composition template="/templates/content.xhtml">
+		<ui:define name="title">新規</ui:define>
+		<ui:define name="content">
+			<h:form id="frm">
+				<h:panelGrid columns="2">
+
+					<p:outputLabel value="社員番号" for="shainId" />
+					<p:inputText id="shainId" value="#{shainInsertBean.shainId}" />
+
+					<p:outputLabel value="パスワード" for="shainPw" />
+				    <p:password id="shainPw" value="#{shainInsertBean.shainPw}" feedback="true" />
+
+					<p:outputLabel value="パスワード(確認用)" for="shainPk" />
+					<p:password id="shainPk" value="#{shainInsertBean.shainPk}" />
+
+					<p:outputLabel value="社員名(性)" for="shainMei_s" />
+					<p:inputText id="shainMei_s" value="#{shainInsertBean.shainMei_s}" />
+
+					<p:outputLabel value="社員名(名)" for="shainMei_m" />
+					<p:inputText id="shainMei_m" value="#{shainInsertBean.shainMei_m}" />
+
+					<p:outputLabel value="フリガナ(性)" for="shainKana_s" />
+					<p:inputText id="shainKana_s" value="#{shainInsertBean.shainKana_s}" />
+
+					<p:outputLabel value="フリガナ(名)" for="shainKana_m" />
+					<p:inputText id="shainKana_m" value="#{shainInsertBean.shainKana_m}" />
+
+					<p:outputLabel value="性別" for="shainGender" />
+					<p:selectOneRadio id="shainGender" value="#{shainInsertBean.shainGender}">
+						<f:selectItem itemValue="0" itemLabel="男"/>
+						<f:selectItem itemValue="1" itemLabel="女" />
+					</p:selectOneRadio>
+
+					<p:outputLabel for="shainBirth" value="生年月日" />
+      				<p:calendar id="shainBirth" value="#{shainInsertBean.shainBirth}" pattern="yyyy-MM-dd" mask="true" />
+
+					<p:outputLabel value="現住所(最寄駅)" for="shainAddress" />
+					<p:inputText id="shainAddress" value="#{shainInsertBean.shainAddress}" />
+
+					<p:outputLabel value="最終学歴" for="shainSchool" />
+					<p:selectOneMenu id="shainSchool" value="#{shainInsertBean.shainSchool}">
+						<f:selectItem itemLabel="大学院卒" itemValue="0" />
+						<f:selectItem itemLabel="四大卒" itemValue="1" />
+						<f:selectItem itemLabel="短大卒" itemValue="2" />
+						<f:selectItem itemLabel="専門卒" itemValue="3" />
+					</p:selectOneMenu>
+
+
+				</h:panelGrid>
+				<p:commandButton value="登録" actionListener="#{shainInsertBean.insert}" update="messages,@form">
+					<p:confirm icon="ui-icon-alert" />
+				</p:commandButton>
+
+
+				<p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" />
+			</h:form>
+			<p:confirmDialog global="true" gwidgetVar="cd" header="確認"
+				message="登録しますか?" severity="alert">
+				<p:commandButton value="はい" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="いいえ" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

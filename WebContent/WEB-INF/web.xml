@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+
+	<display-name>BusinessCareer</display-name>
+
+	<welcome-file-list>
+<!-- 		<welcome-file>faces/login.xhtml</welcome-file> -->
+		<welcome-file>login.xhtml</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+<!-- 		<url-pattern>/faces/*</url-pattern> -->
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/error.xhtml</location>
+	</error-page>
+
+	<context-param>
+	    <param-name>javax.faces.PROJECT_STAGE</param-name>
+<!-- 	    <param-value>Development</param-value> -->
+			<param-value>Production</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+<!-- 		<param-value>excite-bike</param-value> -->
+<!-- 		<param-value>smoothness</param-value> -->
+		<param-value>afterwork</param-value>
+	</context-param>
+
+</web-app>
