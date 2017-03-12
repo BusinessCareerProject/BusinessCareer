@@ -17,10 +17,6 @@
 			<property name="url" value="jdbc:mysql://localhost/business_career"/>
 			<property name="username" value="root"/>
 			<property name="password" value="root"/>
-<!-- 			<property name="password" value="mysql"/> -->
-<!-- 			<property name="url" value="jdbc:mysql://192.168.0.23:3306/business_career"/> -->
-<!-- 			<property name="username" value="user1"/> -->
-<!-- 			<property name="password" value="pass"/> -->
 		</dataSource>
 		</environment>
 	</environments>
